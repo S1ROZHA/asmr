@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590763325547",
+    "project_id": "licking-21d83",
+    "storage_bucket": "licking-21d83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590763325547:android:d88e8636b592976293592e",
+        "android_client_info": {
+          "package_name": "com.ROFLAN.asmr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590763325547-ui92r4pfb9mt61o63evhmsagtn4j7dd0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6_FgyADF1tqS7hqHK8_QGfg5j-OGwoXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590763325547-ui92r4pfb9mt61o63evhmsagtn4j7dd0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

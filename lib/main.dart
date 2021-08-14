@@ -1,9 +1,11 @@
+import 'package:asmr/screens/welcome/WelcomeScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'package:asmr/screens/welcome/WelcomeScreen.dart';
-import 'package:asmr/screens/AsmrHome.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
-void main() {
   runApp(MyApp());
 }
 
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: AsmrHome(),
+      home: WelcomeScreen(),
     );
   }
 }
