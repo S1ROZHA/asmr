@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-const int maxFailedLoadAttempts = 3;
+const int maxFailedLoadAttempts = 4;
 final String bannerUnitId = BannerAd.testAdUnitId;
 final String interstitialUnitId = InterstitialAd.testAdUnitId;
 
