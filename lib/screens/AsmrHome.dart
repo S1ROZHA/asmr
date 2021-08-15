@@ -1,84 +1,51 @@
+import 'package:asmr/models/video.dart';
+import 'package:asmr/providers/video_provider.dart';
+import 'package:asmr/widgets/video_card.dart';
 import 'package:flutter/material.dart';
-import 'package:asmr/screens/player/player.dart';
 
-class AsmrHome extends StatelessWidget {
+class AsmrHome extends StatefulWidget {
+  @override
+  _AsmrHomeState createState() => _AsmrHomeState();
+}
+
+class _AsmrHomeState extends State<AsmrHome> {
+  final _videoProvider = VideoProvider();
+
+  List<Video> videos = [];
+
+  Future _loadData() async {
+    videos.addAll(await _videoProvider.getVideos(0));
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Text(
+            'ASMR Ear Eating & Licking',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20.0,
+              color: Colors.white,
+            ),
+          ),
+          backgroundColor: Color.fromRGBO(19, 18, 24, 1.0)),
       backgroundColor: Color.fromRGBO(19, 18, 24, 1.0),
-      body: ListView(
-        children: <Widget> [
-          Container(
-            padding: EdgeInsets.all(10),
-            child: Text(
-              'ASMR Ear Eating & Licking',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-                color: Colors.white,
-              ),
-            ),
-          ),
-            Container(
-              padding: EdgeInsets.all(10),
-              child: Column(
-                children: [
-                  videoCard(context),
-                ],
-              ),
-            ),
-          ],
-      ),
-    );
-  }
-
-  Widget videoCard(BuildContext context){
-    return InkWell(
-      onTap: (){
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Player(),
-          ),
-        );
-      },
-      child: Column(
-        children: [
-          Card(
-            elevation: 0.0,
-            child: Image.asset(
-              "assets/images/hq720.png",
-              fit: BoxFit.fill,
-              height: 202,
-            ),
-          ),
-          ListTile(
-            contentPadding: EdgeInsets.only(left: 0.0, right: 0.0),
-            leading: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/unnamed.jpg"),
-              radius: 20,
-            ),
-            title: Text(
-              "ASMR Ear Licking 3Dio / АСМР Ликинг",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 10.0,
-                color: Colors.white,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
-            subtitle: Text(
-              "tangerine",
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 19.0,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+      body: FutureBuilder<List<Video>>(
+        future: _videoProvider.getVideos(0),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) =>
+                    VideoCard(snapshot.data![index]));
+          } else {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }
