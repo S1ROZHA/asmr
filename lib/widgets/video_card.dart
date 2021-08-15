@@ -3,14 +3,19 @@ import 'package:asmr/screens/player/player.dart';
 import 'package:flutter/material.dart';
 
 class VideoCard extends StatelessWidget {
-  VideoCard(this.video);
+  VideoCard(
+    this.video,
+    this.onOpenVideo,
+  );
 
   final Video video;
+  VoidCallback onOpenVideo;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onOpenVideo();
         Navigator.push(
           context,
           MaterialPageRoute(

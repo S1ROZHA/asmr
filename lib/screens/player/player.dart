@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-const int maxFailedLoadAttempts = 4;
 final String bannerUnitId = BannerAd.testAdUnitId;
-final String interstitialUnitId = InterstitialAd.testAdUnitId;
 
 class Player extends StatefulWidget {
   Player(this.url);
@@ -24,18 +22,8 @@ class _PlayerState extends State<Player> {
     ),
   );
 
-  InterstitialAd? _interstitialAd;
-  int _numInterstitialLoadAttempts = 0;
-  bool _interstitialShowed = false;
-
   BannerAd? _anchoredBanner;
   bool _loadingAnchoredBanner = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _createInterstitialAd();
-  }
 
   @override
   void dispose() {
@@ -104,50 +92,5 @@ class _PlayerState extends State<Player> {
       ),
     );
     return banner.load();
-  }
-
-  void _createInterstitialAd() {
-    InterstitialAd.load(
-        adUnitId: interstitialUnitId,
-        request: AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-          onAdLoaded: (InterstitialAd ad) {
-            print('$ad loaded');
-            _interstitialAd = ad;
-            _numInterstitialLoadAttempts = 0;
-            _showInterstitialAd();
-          },
-          onAdFailedToLoad: (LoadAdError error) {
-            print('InterstitialAd failed to load: $error.');
-            _numInterstitialLoadAttempts += 1;
-            _interstitialAd = null;
-            if (_numInterstitialLoadAttempts <= maxFailedLoadAttempts) {
-              _createInterstitialAd();
-            }
-          },
-        ));
-  }
-
-  void _showInterstitialAd() {
-    if (_interstitialAd == null || _interstitialShowed) {
-      return;
-    }
-    _interstitialAd!.fullScreenContentCallback = FullScreenContentCallback(
-      onAdShowedFullScreenContent: (InterstitialAd ad) =>
-          print('ad onAdShowedFullScreenContent.'),
-      onAdDismissedFullScreenContent: (InterstitialAd ad) {
-        print('$ad onAdDismissedFullScreenContent.');
-        ad.dispose();
-        _createInterstitialAd();
-      },
-      onAdFailedToShowFullScreenContent: (InterstitialAd ad, AdError error) {
-        print('$ad onAdFailedToShowFullScreenContent: $error');
-        ad.dispose();
-        _createInterstitialAd();
-      },
-    );
-    _interstitialAd!.show();
-    _interstitialAd = null;
-    _interstitialShowed = true;
   }
 }
