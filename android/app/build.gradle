@@ -33,7 +33,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.ROFLAN.asmr"
+        applicationId "com.ROFLAN.ASMR"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode flutterVersionCode.toInteger()
