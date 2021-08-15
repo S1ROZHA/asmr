@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "590763325547",
-    "project_id": "licking-21d83",
-    "storage_bucket": "licking-21d83.appspot.com"
+    "project_number": "929676385825",
+    "project_id": "asmr-37cac",
+    "storage_bucket": "asmr-37cac.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:590763325547:android:d88e8636b592976293592e",
+        "mobilesdk_app_id": "1:929676385825:android:d5a439654268f1853b4d60",
         "android_client_info": {
-          "package_name": "com.ROFLAN.asmr"
+          "package_name": "com.ROFLAN.ASMR"
         }
       },
       "oauth_client": [
         {
-          "client_id": "590763325547-ui92r4pfb9mt61o63evhmsagtn4j7dd0.apps.googleusercontent.com",
+          "client_id": "929676385825-f3ik9rfg3aefg2u114h3eapohje1v6pu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ROFLAN.ASMR",
+            "certificate_hash": "ed8d5a34580eb1523f74ccbbee424a89416cd865"
+          }
+        },
+        {
+          "client_id": "929676385825-u1vmdishpensn5pvu4mdl6vook4pdcur.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA6_FgyADF1tqS7hqHK8_QGfg5j-OGwoXE"
+          "current_key": "AIzaSyDO_v04xrw8Po87H9YUJOiu2Tnzul0gjEM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "590763325547-ui92r4pfb9mt61o63evhmsagtn4j7dd0.apps.googleusercontent.com",
+              "client_id": "929676385825-u1vmdishpensn5pvu4mdl6vook4pdcur.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
